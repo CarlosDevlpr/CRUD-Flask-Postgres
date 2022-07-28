@@ -18,8 +18,8 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['CORS_HEADERS'] = os.getenv('CORS_HEADERS')
 
 from src.routes.user import *
-from src.models.user import UsersTable
+from src.models.user import UsersModel
 
 @app.shell_context_processor
 def make_shell_context():
-    return dict(app=app, db=db, User=UsersTable)
+    return dict(app=app, db=db, User=UsersModel)

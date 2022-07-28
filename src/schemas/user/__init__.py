@@ -1,4 +1,5 @@
 from pydantic import BaseModel as BaseModelPY
+from typing import List
 
 #Para a rota de criar os usuários
 class CreateUser(BaseModelPY):
@@ -6,10 +7,14 @@ class CreateUser(BaseModelPY):
     email: str
     password: str
 
-#Para pesquisar os usuários
+#Para pesquisar os usuários de forma pública
 class CreatedUser(BaseModelPY):
     username: str
     email: str
+
+#Para retornar listas de usuários pública
+class UsersList:
+    users: List[CreatedUser]
 
 #Para validar as requisições
 class ForBody(BaseModelPY):

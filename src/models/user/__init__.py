@@ -7,7 +7,7 @@ db = db
 class UsersModel(BaseEntity):
 	__tablename__ = 'users'
 
-	fullname = db.Column(db.String(200))
+	username = db.Column(db.String(200))
 	email = db.Column(db.String(200))
 	password = db.Column(db.String(250))
 
