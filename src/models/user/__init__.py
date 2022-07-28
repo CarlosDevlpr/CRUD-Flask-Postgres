@@ -3,8 +3,8 @@ from src.utils.bases import BaseEntity
 
 db = db
 
-#Crie suas tabelas com essas bases
-class UsersTable(BaseEntity):
+#Crie os modelos das suas tabelas com essas classes
+class UsersModel(BaseEntity):
 	__tablename__ = 'users'
 
 	fullname = db.Column(db.String(200))
