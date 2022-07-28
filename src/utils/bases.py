@@ -8,9 +8,21 @@ from sqlalchemy.sql.schema import Column
 from sqlalchemy.types import Boolean, DateTime, Integer
 from src import db
 
-class errorSchema(BaseModelPY):
+class ErrorSchema(BaseModelPY):
     error: Any
     code: int
+
+class BaseModel(db.Model):
+    __abstract__ = True
+
+    created_on = db.Column(db.DateTime, default=db.func.now())
+    updated_on = db.Column(
+        db.DateTime,
+        server_default=db.func.now(),
+        server_onupdate=db.func.now(),
+        onupdate=datetime.utcnow,
+    )
+    deleted = db.Column(db.Boolean, default=False)
 
 #Uma base com colunas essencias para diveras tabelas, inclusive as de usuário
 class BaseEntity(db.Model):
