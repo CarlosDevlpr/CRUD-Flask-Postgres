@@ -13,7 +13,7 @@ class CreatedUser(BaseModelPY):
     email: str
 
 #Para retornar listas de usuários pública
-class UsersList:
+class UsersList(BaseModelPY):
     users: List[CreatedUser]
 
 #Para validar as requisições

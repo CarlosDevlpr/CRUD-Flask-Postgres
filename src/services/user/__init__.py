@@ -1,5 +1,5 @@
 from src.models.user import UsersModel
-from src.schemas.user import CreatedUser
+from src.schemas.user import CreatedUser, UsersList
 from flask import request
 from werkzeug.security import generate_password_hash
 from sqlalchemy import  or_
@@ -23,3 +23,10 @@ class UserService(BaseService):
 		if self.user_exists(username, email):
 			raise Forbidden('this user already exists')
 		return self.commit_user()
+
+	def get_all_users(self):
+		users = UsersModel.query.all()
+		public_users = []
+		for user in users:
+			public_users.append(CreatedUser(username=user.username, email=user.email))
+		return UsersList(users=public_users)
